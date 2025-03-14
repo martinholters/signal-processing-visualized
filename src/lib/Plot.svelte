@@ -16,7 +16,13 @@
     ylims: readonly [number, number];
     dragruleposition: null | number;
     ondragstart: (x: number, y: number) => DragContext;
-    ondrag: (x: number, y: number, deltax: number, deltay: number, extra: DragContext) => void;
+    ondrag: (
+      x: number,
+      y: number,
+      deltax: number,
+      deltay: number,
+      extra: DragContext,
+    ) => void;
     content: null | Snippet<
       [d3.ScaleContinuousNumeric<number, number>, d3.ScaleContinuousNumeric<number, number>]
     >;
@@ -29,7 +35,9 @@
     xlims = [-1, 1],
     ylims = [0, 1],
     content = null,
-    ondragstart = () => { return undefined as DragContext; },
+    ondragstart = () => {
+      return undefined as DragContext;
+    },
     ondrag = (x, y, deltax, deltay) => {},
   }: Props = $props();
 
@@ -53,13 +61,13 @@
       d3
         .drag<SVGSVGElement, unknown>()
         .on('start', (event) => {
-          dragStartX = xscale.invert(event.x);
-          dragStartY = yscale.invert(event.y);
+          dragStartX = xscale.invert(event.sourceEvent.offsetX);
+          dragStartY = yscale.invert(event.sourceEvent.offsetY);
           dragCtx = ondragstart(dragStartX, dragStartY);
         })
         .on('drag', (event) => {
-          const x = xscale.invert(event.x);
-          const y = yscale.invert(event.y);
+          const x = xscale.invert(event.sourceEvent.offsetX);
+          const y = yscale.invert(event.sourceEvent.offsetY);
           ondrag(x, y, x - dragStartX, y - dragStartY, dragCtx);
         }),
     );
