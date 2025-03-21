@@ -273,7 +273,7 @@
 {/snippet}
 <div style="display: inline-block; text-align: center;">
   <select id="select_u" bind:value={uchoice}>
-    {#each inputChoices as c}
+    {#each inputChoices as c (c.label)}
       <option value={c}>{c.label}</option>
     {/each}
   </select>
@@ -287,7 +287,7 @@
 </div>
 <div style="display: inline-block; text-align: center;">
   <select id="select_h" bind:value={hchoice}>
-    {#each inputChoices as c}
+    {#each inputChoices as c (c.label)}
       <option value={c}>{c.label}</option>
     {/each}
   </select>

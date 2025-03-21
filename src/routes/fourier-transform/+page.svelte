@@ -189,7 +189,7 @@
 {/snippet}
 <div style="display: inline-block; text-align: center;">
   <select id="select_u" bind:value={xchoice}>
-    {#each inputChoices as c}
+    {#each inputChoices as c (c.label)}
       <option value={c}>{c.label}</option>
     {/each}
   </select>
