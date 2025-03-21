@@ -20,7 +20,7 @@
         [range[1], this.value],
       ];
     }
-    eval(x: number) {
+    eval() {
       return this.value;
     }
   }
@@ -268,10 +268,10 @@
     xlims={[-xchoice.omega_max, xchoice.omega_max]}
     ylabel="Re(X(jω))"
     ylims={[-0.8, 1]}
-    ondragstart={(x, y) => {
+    ondragstart={(x) => {
       omega = x;
     }}
-    ondrag={(x, y, deltax, deltay, _) => {
+    ondrag={(x) => {
       omega = x;
     }}
   >
@@ -301,10 +301,10 @@
     xlims={[-xchoice.omega_max, xchoice.omega_max]}
     ylabel="Im(X(jω))"
     ylims={[-0.8, 1]}
-    ondragstart={(x, y) => {
+    ondragstart={(x) => {
       omega = x;
     }}
-    ondrag={(x, y, deltax, deltay, _) => {
+    ondrag={(x) => {
       omega = x;
     }}
   >

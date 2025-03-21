@@ -14,7 +14,6 @@
     ylabel: string;
     xlims: readonly [number, number];
     ylims: readonly [number, number];
-    dragruleposition: null | number;
     ondragstart: (x: number, y: number) => DragContext;
     ondrag: (
       x: number,
@@ -38,7 +37,7 @@
     ondragstart = () => {
       return undefined as DragContext;
     },
-    ondrag = (x, y, deltax, deltay) => {},
+    ondrag = () => {},
   }: Props = $props();
 
   let plot_node: SVGSVGElement;

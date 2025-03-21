@@ -23,7 +23,7 @@
           .getPlotData([this.shift - range[1], this.shift - range[0]])
           .map(([x, y]) => [this.shift - x, y] as [number, number])
           .reverse()
-          .filter(([x, _]) => range[0] <= x && x <= range[1]),
+          .filter(([x]) => range[0] <= x && x <= range[1]),
         [range[1], this.func.eval(this.shift - range[1])],
       ];
     }
@@ -306,7 +306,7 @@
     xlabel="τ"
     xlims={y_xlims}
     ylabel="u(τ), h(t-τ)"
-    ondragstart={(x, y) => t}
+    ondragstart={() => t}
     ondrag={(x, y, deltax, deltay, startt) => {
       t = startt + deltax;
     }}
@@ -342,10 +342,10 @@
     xlabel="t"
     xlims={y_xlims}
     ylabel="y(t)"
-    ondragstart={(x, y) => {
+    ondragstart={(x) => {
       t = x;
     }}
-    ondrag={(x, y, deltax, deltay, _) => {
+    ondrag={(x) => {
       t = x;
     }}
   >
