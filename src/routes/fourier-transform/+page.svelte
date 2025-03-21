@@ -20,7 +20,7 @@
         [range[1], this.value],
       ];
     }
-    eval(x: number) {
+    eval() {
       return this.value;
     }
   }
@@ -189,7 +189,7 @@
 {/snippet}
 <div style="display: inline-block; text-align: center;">
   <select id="select_u" bind:value={xchoice}>
-    {#each inputChoices as c}
+    {#each inputChoices as c (c.label)}
       <option value={c}>{c.label}</option>
     {/each}
   </select>
@@ -268,10 +268,10 @@
     xlims={[-xchoice.omega_max, xchoice.omega_max]}
     ylabel="Re(X(jω))"
     ylims={[-0.8, 1]}
-    ondragstart={(x, y) => {
+    ondragstart={(x) => {
       omega = x;
     }}
-    ondrag={(x, y, deltax, deltay, _) => {
+    ondrag={(x) => {
       omega = x;
     }}
   >
@@ -301,10 +301,10 @@
     xlims={[-xchoice.omega_max, xchoice.omega_max]}
     ylabel="Im(X(jω))"
     ylims={[-0.8, 1]}
-    ondragstart={(x, y) => {
+    ondragstart={(x) => {
       omega = x;
     }}
-    ondrag={(x, y, deltax, deltay, _) => {
+    ondrag={(x) => {
       omega = x;
     }}
   >
